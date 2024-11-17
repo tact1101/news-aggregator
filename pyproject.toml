@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "searchengine"
+version = "0.1.0"
+description = "Aggregates news for users provoding the personal configuration."
+authors = ["tact1101 <christbleighton@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
