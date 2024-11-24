@@ -1,0 +1,40 @@
+services:
+  db:
+    container_name: postgres_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: sudo
+      POSTGRES_DB: newsDB
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - postgres
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bleighton@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: sudo
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge   
+ 
+volumes:
+  postgres:
+  pgadmin:
